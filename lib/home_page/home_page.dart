@@ -10,12 +10,16 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Center(
-          child: Text("App Name", style: AppTextStyles.appTitle,),
+          child: Text(
+            "App Name",
+            style: AppTextStyles.appTitle,
+          ),
         ),
       ),
       body: Center(
         child: Text('teste'),
       ),
+      bottomNavigationBar: BottomNavigationBar(items: [BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"), BottomNavigationBarItem(icon: Icon(Icons.crop), label: "config")])
     );
   }
 }
