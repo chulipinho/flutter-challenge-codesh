@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_challenge/home_page/home_repository.dart';
 import 'package:flutter_challenge/models/item_model.dart';
 import 'package:mobx/mobx.dart';
@@ -10,17 +11,18 @@ class HomePageController = _HomePageController with _$HomePageController;
 
 abstract class _HomePageController with Store {
   final repository = HomeRepository();
+  final stateNotifier = ValueNotifier(HomeState.empty);
   
-  @observable
-  HomeState state = HomeState.empty;
-  
+  set state(value) => stateNotifier.value = value;
+  HomeState get state => stateNotifier.value;
+
   @observable
   ObservableList<ItemModel>? items;  
 
   void load() async{
     state = HomeState.loading;
     final list = await repository.getItems();
-    items = ObservableList<ItemModel>.of(list);
+    items = ObservableList<ItemModel>.of(list).asObservable();
     state = HomeState.loaded;
   }
 

@@ -5,8 +5,8 @@ import 'package:flutter_challenge/home_page/widgets/rating_widget.dart';
 import '../../models/item_model.dart';
 
 class ItemWidget extends StatelessWidget {
-  final ItemModel? item;
-  const ItemWidget({this.item, Key? key}) : super(key: key);
+  final ItemModel item;
+  const ItemWidget({required this.item, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +37,9 @@ class ItemWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Title'),
-                          Text('Type'),
-                          RatingWidget(rating: 2),
+                          Text(item.title),
+                          Text(item.type),
+                          RatingWidget(rating: item.rating),
                         ],
                       ),
                     ),
@@ -53,7 +53,7 @@ class ItemWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text("menu"),
-                    Text("price"),
+                    Text('\$ ${item.price}'),
                   ],
                 ),
               )
