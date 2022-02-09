@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge/core/app_colors.dart';
+import 'package:flutter_challenge/home_page/widgets/rating_widget.dart';
 
 import '../../models/item_model.dart';
 
@@ -14,7 +16,7 @@ class ItemWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.red, borderRadius: BorderRadius.circular(5)),
+            borderRadius: BorderRadius.circular(5), border: Border.all(color: AppColors.grey)),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Row(
@@ -37,7 +39,7 @@ class ItemWidget extends StatelessWidget {
                         children: [
                           Text('Title'),
                           Text('Type'),
-                          Text("rating")
+                          RatingWidget(rating: 2),
                         ],
                       ),
                     ),
