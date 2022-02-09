@@ -11,10 +11,9 @@ class HomePageController = _HomePageController with _$HomePageController;
 
 abstract class _HomePageController with Store {
   final repository = HomeRepository();
-  final stateNotifier = ValueNotifier(HomeState.empty);
   
-  set state(value) => stateNotifier.value = value;
-  HomeState get state => stateNotifier.value;
+  @observable
+  HomeState state = HomeState.empty;
 
   @observable
   ObservableList<ItemModel>? items;  
