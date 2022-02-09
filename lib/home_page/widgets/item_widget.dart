@@ -22,29 +22,27 @@ class ItemWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Container(
+              Container(
+                height: defaultHeight,
+                width: defaultHeight,
+                decoration: BoxDecoration(color: Colors.green),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: SizedBox(
                     height: defaultHeight,
-                    width: defaultHeight,
-                    decoration: BoxDecoration(color: Colors.green),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: SizedBox(
-                      height: defaultHeight,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(item.title),
-                          Text(item.type),
-                          RatingWidget(rating: item.rating),
-                        ],
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(item.title),
+                        Text(item.type),
+                        RatingWidget(rating: item.rating),
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
               SizedBox(
                 height: defaultHeight,
