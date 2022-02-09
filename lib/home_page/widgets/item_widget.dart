@@ -25,7 +25,7 @@ class ItemWidget extends StatelessWidget {
               Container(
                 height: defaultHeight,
                 width: defaultHeight,
-                decoration: BoxDecoration(color: Colors.green),
+                decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/${item.filename}'), fit: BoxFit.fill)),
               ),
               Expanded(
                 child: Padding(
