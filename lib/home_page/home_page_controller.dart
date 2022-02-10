@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_challenge/home_page/home_repository.dart';
 import 'package:flutter_challenge/models/item_model.dart';
 import 'package:mobx/mobx.dart';
@@ -28,5 +27,9 @@ abstract class _HomePageController with Store {
   @action
   void addItem(ItemModel item) {
     items!.add(item);
+  }
+  @action
+  void removeItem(ItemModel item) {
+    items!.remove(item);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/core/app_colors.dart';
+import 'package:flutter_challenge/home_page/widgets/pop_up_menu_widget.dart';
 import 'package:flutter_challenge/home_page/widgets/rating_widget.dart';
 
 import '../../models/item_model.dart';
@@ -50,7 +51,7 @@ class ItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("menu"),
+                    PopUpMenuWidget(item: item),
                     Text('\$ ${item.price}'),
                   ],
                 ),

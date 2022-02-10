@@ -54,6 +54,17 @@ mixin _$HomePageController on _HomePageController, Store {
   }
 
   @override
+  void removeItem(ItemModel item) {
+    final _$actionInfo = _$_HomePageControllerActionController.startAction(
+        name: '_HomePageController.removeItem');
+    try {
+      return super.removeItem(item);
+    } finally {
+      _$_HomePageControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 state: ${state},
