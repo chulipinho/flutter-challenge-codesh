@@ -8,7 +8,7 @@ Para instalar o aplicativo basta executar o [.apk](https://drive.google.com/file
 
 
 
-![QR code para Download](D:\Users\felli\Desktop\flutter-20210610\assets\DownloadQR.png)
+![QR code para Download](assets/DownloadQR.png)
 
 Ou clicando [aqui](https://drive.google.com/file/d/16UJIWGMFizQ4ar8Cpyko8X9NBxAjKBzz/view?usp=sharing).
 
