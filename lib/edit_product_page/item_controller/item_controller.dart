@@ -34,4 +34,22 @@ abstract class _ItemController with Store {
         type = item.type,
         rating = item.rating,
         price = item.price;
+
+  operator [](value) {
+    switch (value) {
+      case "title":
+        title;
+        break;
+      case "type":
+        type;
+        break;
+      case "rating":
+        rating;
+        break;
+      case "price":
+        price;
+        break;
+    }
+  }
+  
 }

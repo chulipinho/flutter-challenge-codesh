@@ -1,26 +1,26 @@
 import 'dart:convert';
 
-enum ItemTypes { dairy, fruit, vegetable, bakery, vegan, meat }
+enum ItemType { dairy, fruit, vegetable, bakery, vegan, meat }
 
-extension TypeExt on ItemTypes {
+extension TypeExt on ItemType {
   String get parse => {
-        ItemTypes.dairy: "dairy",
-        ItemTypes.fruit: "fruit",
-        ItemTypes.vegetable: "vegetable",
-        ItemTypes.bakery: "bakery",
-        ItemTypes.vegan: "vegan",
-        ItemTypes.meat: "meat",
+        ItemType.dairy: "dairy",
+        ItemType.fruit: "fruit",
+        ItemType.vegetable: "vegetable",
+        ItemType.bakery: "bakery",
+        ItemType.vegan: "vegan",
+        ItemType.meat: "meat",
       }[this]!;
 }
 
 extension TypeStringExt on String {
-  ItemTypes get typeParse => {
-        "dairy": ItemTypes.dairy,
-        "fruit": ItemTypes.fruit,
-        "vegetable": ItemTypes.vegetable,
-        "bakery": ItemTypes.bakery,
-        "vegan": ItemTypes.vegan,
-        "meat": ItemTypes.meat,
+  ItemType get typeParse => {
+        "dairy": ItemType.dairy,
+        "fruit": ItemType.fruit,
+        "vegetable": ItemType.vegetable,
+        "bakery": ItemType.bakery,
+        "vegan": ItemType.vegan,
+        "meat": ItemType.meat,
       }[this]!;
 }
 
@@ -43,7 +43,7 @@ class ItemModel {
       this.width,
       required this.price,
       required this.rating})
-      : assert(ItemTypes.values.contains(type.typeParse));
+      : assert(ItemType.values.contains(type.typeParse));
 
       
 
