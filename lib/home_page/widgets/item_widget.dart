@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_challenge/core/app_colors.dart';
 import 'package:flutter_challenge/home_page/widgets/pop_up_menu_widget.dart';
 import 'package:flutter_challenge/home_page/widgets/rating_widget.dart';
-
-import '../../models/item_model.dart';
+import 'package:flutter_challenge/shared/models/item_model.dart';
 
 class ItemWidget extends StatelessWidget {
   final ItemModel item;
@@ -26,7 +25,7 @@ class ItemWidget extends StatelessWidget {
               Container(
                 height: defaultHeight,
                 width: defaultHeight,
-                decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/${item.filename}'), fit: BoxFit.fill)),
+                decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/${item.filename}'), fit: BoxFit.cover)),
               ),
               Expanded(
                 child: Padding(

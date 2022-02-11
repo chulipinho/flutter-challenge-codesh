@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/home_page/home_page_controller.dart';
-import 'package:flutter_challenge/models/item_model.dart';
+import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:provider/provider.dart';
 
 class PopUpMenuWidget extends StatelessWidget {

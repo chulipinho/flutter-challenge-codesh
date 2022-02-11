@@ -1,4 +1,4 @@
-import 'package:flutter_challenge/models/item_model.dart';
+import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:mobx/mobx.dart';
 
 part 'item_controller.g.dart';
@@ -6,13 +6,21 @@ part 'item_controller.g.dart';
 class ItemController = _ItemController with _$ItemController;
 
 abstract class _ItemController with Store {
-  // todo: add img field
+
   final ItemModel item;
+
+  String filename;
+ 
 
   @observable
   String title;
   @action
   void changeTitle(value) => title = value;
+
+  @observable
+  String description;
+  @action
+  void changeDescription(value) => description = value;
 
   @observable
   String type;
@@ -25,31 +33,35 @@ abstract class _ItemController with Store {
   void changeRating(value) => rating = value;
 
   @observable
-  double price;
+  String price;
   @action
   void changePrice(value) => price = value;
 
-  _ItemController({required this.item})
+  _ItemController(this.item)
       : title = item.title,
         type = item.type,
         rating = item.rating,
-        price = item.price;
-
-  operator [](value) {
-    switch (value) {
-      case "title":
-        title;
-        break;
-      case "type":
-        type;
-        break;
-      case "rating":
-        rating;
-        break;
-      case "price":
-        price;
-        break;
-    }
-  }
+        price = item.price.toString(),
+        filename = item.filename,
+        description = item.desctiption;
   
+  String? validateName() {
+    if (title == '' || title == null) return 'Please insert a name';
+    return null;
+  }
+  String? validatePrice() {
+    if (price == '' || price == null) return 'Please insert a price';
+    return null;
+  }
+
+  @computed
+  bool get isFormValid => validateName() == null && validatePrice() == null;
+
+  void submitForm() {
+    item.desctiption = description;
+    item.price = double.parse(price);
+    item.title = title;
+    item.type = type;
+    item.rating = rating;
+  }
 }

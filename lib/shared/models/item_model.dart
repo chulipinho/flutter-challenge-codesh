@@ -25,14 +25,14 @@ extension TypeStringExt on String {
 }
 
 class ItemModel {
-  final String title;
-  final String type;
-  final String desctiption;
-  final String filename;
-  final double? height;
-  final double? width;
-  final double price;
-  final int rating;
+  String title;
+  String type;
+  String desctiption;
+  String filename;
+  double? height;
+  double? width;
+  double price;
+  int rating;
 
   ItemModel(
       {required this.title,
