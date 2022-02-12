@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_challenge/models/item_model.dart';
+import 'package:flutter_challenge/shared/models/item_model.dart';
 
 class HomeRepository {
   Future<List<ItemModel>> getItems() async {

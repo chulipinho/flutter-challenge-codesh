@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/home_page/widgets/item_widget.dart';
+import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
-
-import '../../models/item_model.dart';
 
 class ItemList extends StatelessWidget {
   final ObservableList<ItemModel> items;

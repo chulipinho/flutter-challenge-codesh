@@ -57,13 +57,13 @@ mixin _$ItemController on _ItemController, Store {
   final _$priceAtom = Atom(name: '_ItemController.price');
 
   @override
-  double get price {
+  String get price {
     _$priceAtom.reportRead();
     return super.price;
   }
 
   @override
-  set price(double value) {
+  set price(String value) {
     _$priceAtom.reportWrite(value, super.price, () {
       super.price = value;
     });
