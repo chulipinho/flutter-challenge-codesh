@@ -4,6 +4,7 @@ import 'package:flutter_challenge/edit_product_page/item_controller/item_control
 import 'package:flutter_challenge/edit_product_page/widgets/dropdown_type_selector.dart';
 import 'package:flutter_challenge/edit_product_page/widgets/rating_editor_widget.dart';
 import 'package:flutter_challenge/edit_product_page/widgets/text_field_widget.dart';
+import 'package:flutter_challenge/shared/formatters/curency_formatter.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:flutter_challenge/shared/widgets/send_form_appbar_widget.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -15,6 +16,7 @@ class EditProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = ItemController(item);
+    final initialPrice = controller.price;
     const double spacing = 20;
 
     return Scaffold(
@@ -69,10 +71,15 @@ class EditProductPage extends StatelessWidget {
                   Expanded(
                     child: Observer(
                       builder: (_) => TextFormField(
-                        inputFormatters: [],
-                        initialValue: controller.price,
+                        maxLength: 15,
+                        textAlign: TextAlign.end,
+                        inputFormatters: [
+                          CurencyFormatter()
+                        ],
+                        initialValue: CurencyFormatter.formatDouble(initialPrice),
                         onChanged: controller.changePrice,
                         decoration: InputDecoration(
+                          counterText: '',
                           border: OutlineInputBorder(),
                           labelText: "Price",
                           errorText: controller.validatePrice == null
