@@ -46,6 +46,13 @@ class CurencyFormatter extends TextInputFormatter {
     return '$integer,$decimal';
   }
 
+  static double doubleParse(String value) {
+    value = value.replaceAll('.', '');
+    value = value.replaceAll(',', '.');
+
+    return double.parse(value);
+  }
+
   static String separateThousands(String value) {
     String reversed = value.reverse();
     String grouped = reversed

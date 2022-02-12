@@ -1,3 +1,4 @@
+import 'package:flutter_challenge/shared/formatters/curency_formatter.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:mobx/mobx.dart';
 
@@ -59,7 +60,7 @@ abstract class _ItemController with Store {
 
   void submitForm() {
     item.desctiption = description;
-    item.price = double.parse(price);
+    item.price = CurencyFormatter.doubleParse(price);
     item.title = title;
     item.type = type;
     item.rating = rating;
