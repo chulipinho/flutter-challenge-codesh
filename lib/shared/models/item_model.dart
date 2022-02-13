@@ -27,7 +27,7 @@ extension TypeStringExt on String {
 class ItemModel {
   String title;
   String type;
-  String desctiption;
+  String description;
   String filename;
   double? height;
   double? width;
@@ -37,7 +37,7 @@ class ItemModel {
   ItemModel(
       {required this.title,
       required this.type,
-      required this.desctiption,
+      required this.description,
       required this.filename,
       this.height,
       this.width,
@@ -51,7 +51,7 @@ class ItemModel {
     return {
       'title': title,
       'type': type,
-      'desctiption': desctiption,
+      'description': description,
       'filename': filename,
       'height': height,
       'width': width,
@@ -64,7 +64,7 @@ class ItemModel {
     return ItemModel(
       title: map['title'] ?? '',
       type: map['type'] ?? '',
-      desctiption: map['desctiption'] ?? '',
+      description: map['description'] ?? '',
       filename: map['filename'] ?? '',
       height: map['height']?.toDouble(),
       width: map['width']?.toDouble(),

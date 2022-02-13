@@ -42,6 +42,8 @@ class CurencyFormatter extends TextInputFormatter {
     String integer = values[0];
     String decimal = values[1];
     if (decimal.length < 2) decimal = '0' + decimal;
+    
+    integer = separateThousands(integer);
 
     return '$integer,$decimal';
   }

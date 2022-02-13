@@ -9,6 +9,14 @@ part of 'item_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ItemController on _ItemController, Store {
+  Computed<bool>? _$isFormValidComputed;
+
+  @override
+  bool get isFormValid =>
+      (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid,
+              name: '_ItemController.isFormValid'))
+          .value;
+
   final _$titleAtom = Atom(name: '_ItemController.title');
 
   @override
@@ -21,6 +29,21 @@ mixin _$ItemController on _ItemController, Store {
   set title(String value) {
     _$titleAtom.reportWrite(value, super.title, () {
       super.title = value;
+    });
+  }
+
+  final _$descriptionAtom = Atom(name: '_ItemController.description');
+
+  @override
+  String get description {
+    _$descriptionAtom.reportRead();
+    return super.description;
+  }
+
+  @override
+  set description(String value) {
+    _$descriptionAtom.reportWrite(value, super.description, () {
+      super.description = value;
     });
   }
 
@@ -84,6 +107,17 @@ mixin _$ItemController on _ItemController, Store {
   }
 
   @override
+  void changeDescription(dynamic value) {
+    final _$actionInfo = _$_ItemControllerActionController.startAction(
+        name: '_ItemController.changeDescription');
+    try {
+      return super.changeDescription(value);
+    } finally {
+      _$_ItemControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeType(dynamic value) {
     final _$actionInfo = _$_ItemControllerActionController.startAction(
         name: '_ItemController.changeType');
@@ -120,9 +154,11 @@ mixin _$ItemController on _ItemController, Store {
   String toString() {
     return '''
 title: ${title},
+description: ${description},
 type: ${type},
 rating: ${rating},
-price: ${price}
+price: ${price},
+isFormValid: ${isFormValid}
     ''';
   }
 }

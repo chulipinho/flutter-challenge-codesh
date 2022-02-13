@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_challenge/edit_product_page/item_controller/item_controller.dart';
 import 'package:flutter_challenge/edit_product_page/widgets/dropdown_type_selector.dart';
 import 'package:flutter_challenge/edit_product_page/widgets/rating_editor_widget.dart';
@@ -58,7 +57,7 @@ class EditProductPage extends StatelessWidget {
               Observer(
                 builder: (_) => TextFieldWidget(
                     maxLines: 5,
-                    initialValue: controller.title,
+                    initialValue: controller.description,
                     onChanged: controller.changeDescription,
                     label: 'Description'),
               ),
@@ -76,12 +75,13 @@ class EditProductPage extends StatelessWidget {
                         inputFormatters: [
                           CurencyFormatter()
                         ],
-                        initialValue: CurencyFormatter.formatDouble(initialPrice),
+                        initialValue: initialPrice,
                         onChanged: controller.changePrice,
                         decoration: InputDecoration(
                           counterText: '',
                           border: OutlineInputBorder(),
                           labelText: "Price",
+                          // ignore: unnecessary_null_comparison
                           errorText: controller.validatePrice == null
                               ? null
                               : controller.validatePrice(),

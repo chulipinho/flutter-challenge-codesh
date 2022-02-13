@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Colors.white,
             title: Center(
               child: Text(
-                "App Name",
+                "FoodLister",
                 style: AppTextStyles.appTitle,
               ),
             ),

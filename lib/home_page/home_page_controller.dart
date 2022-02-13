@@ -10,12 +10,12 @@ class HomePageController = _HomePageController with _$HomePageController;
 
 abstract class _HomePageController with Store {
   final repository = HomeRepository();
-  
+
   @observable
   HomeState state = HomeState.empty;
 
   @observable
-  ObservableList<ItemModel>? items;  
+  ObservableList<ItemModel>? items;
 
   void load() async{
     state = HomeState.loading;

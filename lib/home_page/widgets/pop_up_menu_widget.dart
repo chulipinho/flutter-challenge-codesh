@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge/edit_product_page/edit_product_page.dart';
 import 'package:flutter_challenge/home_page/home_page_controller.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:provider/provider.dart';
@@ -11,21 +12,22 @@ class PopUpMenuWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Provider.of<HomePageController>(context);
 
-    return PopupMenuButton(
-      itemBuilder: (_) => [
-        PopupMenuItem(
-          child: Text("Delete"),
-          onTap: () {
-            controller.removeItem(item);
-          },
-        ),
-        PopupMenuItem(
-          value: 'item',
-          child: Text("Edit"),
-          onTap: () {},
-        )
+    return Row(
+      children: [
+        IconButton(
+            onPressed: () {
+              controller.removeItem(item);
+            },
+            icon: Icon(Icons.close)),
+        IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => EditProductPage(item: item)));
+            },
+            icon: Icon(Icons.edit))
       ],
-      child: Icon(Icons.menu),
     );
   }
 }

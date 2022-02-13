@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter_challenge/shared/formatters/curency_formatter.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:mobx/mobx.dart';
@@ -42,9 +44,9 @@ abstract class _ItemController with Store {
       : title = item.title,
         type = item.type,
         rating = item.rating,
-        price = item.price.toString(),
+        price = CurencyFormatter.formatDouble(item.price),
         filename = item.filename,
-        description = item.desctiption;
+        description = item.description;
   
   String? validateName() {
     if (title == '' || title == null) return 'Please insert a name';
@@ -59,7 +61,7 @@ abstract class _ItemController with Store {
   bool get isFormValid => validateName() == null && validatePrice() == null;
 
   void submitForm() {
-    item.desctiption = description;
+    item.description = description;
     item.price = CurencyFormatter.doubleParse(price);
     item.title = title;
     item.type = type;

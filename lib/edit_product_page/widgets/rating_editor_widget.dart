@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/core/app_colors.dart';
 import 'package:flutter_challenge/edit_product_page/item_controller/item_controller.dart';
-import 'package:flutter_challenge/home_page/widgets/rating_widget.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 class RatingEditorWidget extends StatefulWidget {
