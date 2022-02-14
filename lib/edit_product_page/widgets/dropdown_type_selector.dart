@@ -17,7 +17,6 @@ class _DropdownTypeSelectorWidgetState
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 54,
       child: InputDecorator(
           decoration: InputDecoration(
               border:

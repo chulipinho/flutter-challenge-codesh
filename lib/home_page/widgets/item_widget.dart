@@ -69,6 +69,8 @@ class _ItemWidgetState extends State<ItemWidget> {
                     Row(
                       children: [
                         IconButton(
+                          padding: EdgeInsets.only(right: 12),
+                          constraints: BoxConstraints(),
                             onPressed: () {
                               showDialog<String>(
                                 context: context,
@@ -118,8 +120,10 @@ class _ItemWidgetState extends State<ItemWidget> {
                                 ),
                               );
                             },
-                            icon: Icon(Icons.close)),
+                            icon: Icon(Icons.close, size:26,)),
                         IconButton(
+                          padding: EdgeInsets.all(0),
+                          constraints: BoxConstraints(),
                             onPressed: () {
                               Navigator.push(
                                   context,
@@ -129,7 +133,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                                 setState(() {});
                               });
                             },
-                            icon: Icon(Icons.edit))
+                            icon: Icon(Icons.edit, size: 24,))
                       ],
                     ),
                     Text('\$ $price'),
