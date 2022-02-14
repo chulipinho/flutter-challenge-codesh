@@ -1,6 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_challenge/home_page/home_repository.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:mobx/mobx.dart';
+
 
 part 'home_page_controller.g.dart';
 
@@ -18,6 +20,7 @@ abstract class _HomePageController with Store {
   ObservableList<ItemModel>? items;
 
   void load() async{
+    await Firebase.initializeApp();
     state = HomeState.loading;
     final list = await repository.getItems();
     items = ObservableList<ItemModel>.of(list).asObservable();
