@@ -41,7 +41,7 @@ class CurencyFormatter extends TextInputFormatter {
 
     String integer = values[0];
     String decimal = values[1];
-    if (decimal.length < 2) decimal = '0' + decimal;
+    if (decimal.length < 2) decimal = decimal + '0';
     
     integer = separateThousands(integer);
 
