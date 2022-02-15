@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 enum ItemType { dairy, fruit, vegetable, bakery, vegan, meat }
 
 extension TypeExt on ItemType {
@@ -45,35 +43,25 @@ class ItemModel {
       required this.rating})
       : assert(ItemType.values.contains(type.typeParse));
 
-      
+  factory ItemModel.fromDB(Map<String, dynamic> data) {
+    var a = ItemModel(
+        title: data['title'],
+        type: data['type'],
+        description: data['description'],
+        filename: data['filename'],
+        price: data['price'],
+        rating: data['rating']);
+    return a;
+  }
 
   Map<String, dynamic> toMap() {
-    return {
+    return <String, dynamic>{
       'title': title,
       'type': type,
       'description': description,
       'filename': filename,
-      'height': height,
-      'width': width,
       'price': price,
-      'rating': rating,
+      'rating': rating
     };
   }
-
-  factory ItemModel.fromMap(Map<String, dynamic> map) {
-    return ItemModel(
-      title: map['title'] ?? '',
-      type: map['type'] ?? '',
-      description: map['description'] ?? '',
-      filename: map['filename'] ?? '',
-      height: map['height']?.toDouble(),
-      width: map['width']?.toDouble(),
-      price: map['price']?.toDouble() ?? 0.0,
-      rating: map['rating']?.toInt() ?? 0,
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory ItemModel.fromJson(String source) => ItemModel.fromMap(json.decode(source));
-} 
+}
