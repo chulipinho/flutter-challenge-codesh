@@ -13,6 +13,8 @@ abstract class _ItemController with Store {
   final ItemModel item;
 
   String filename;
+  int created;
+  int lastEdit;
 
   @observable
   String title;
@@ -45,7 +47,9 @@ abstract class _ItemController with Store {
         rating = item.rating,
         price = CurencyFormatter.formatDouble(item.price),
         filename = item.filename,
-        description = item.description;
+        description = item.description,
+        lastEdit = item.lastEdit,
+        created = item.created;
 
   String? validateName() {
     if (title == '' || title == null) return 'Please insert a name';
@@ -67,7 +71,8 @@ abstract class _ItemController with Store {
       'price': CurencyFormatter.doubleParse(price),
       'title': title,
       'type': type,
-      'rating': rating
+      'rating': rating,
+      'lastEdit': DateTime.now().millisecondsSinceEpoch
     });
   }
 }

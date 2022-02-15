@@ -5,11 +5,9 @@ class HomeRepository {
   final DatabaseReference _database = FirebaseDatabase.instance.ref();
 
   Stream<List<ItemModel>> getItems() {
-    final itemStream = _database.onValue;
-
+    final itemStream = _database.child('items').onValue;
     final results = itemStream.map((event) {
-      final itemMap =
-          Map<dynamic, dynamic>.from((event.snapshot.value as List).asMap());
+      final itemMap = Map<dynamic, dynamic>.from(event.snapshot.value as Map);
       final itemList = itemMap.entries.map((e) {
         return ItemModel.fromDB(Map<String, dynamic>.from(e.value), e.key);
       }).toList();
@@ -18,13 +16,31 @@ class HomeRepository {
     return results;
   }
 
-  void push(ItemModel item) {
-    _database.push().set(item.toMap());
-  }
+  // void fixDB() async {
+  //   final item = await _database.get();
+  //   final newItemMap = (item.value as List).map((e) => newItem(e)).toList();
+  //   for (var i = 0; i < newItemMap.length; i++) {
+  //     _database.child('items').push().set(newItemMap[i]);
+  //   }
+  // }
 
-  void remove(ItemModel item) {
-    // todo: treat case for more than one title
-    final itemReference = _database.child(item.title);
-    itemReference.remove();
+  // Map<String, dynamic> newItem(Map item) {
+  //   return {
+  //     "title": item["title"],
+  //     "type": item["type"],
+  //     "description": item["description"],
+  //     "filename": item["filename"],
+  //     "height": item["height"],
+  //     "width": item["width"],
+  //     "price": item["price"],
+  //     "rating": item["rating"],
+  //     "lastEdit": DateTime.now().millisecondsSinceEpoch,
+  //     "created": DateTime.now().millisecondsSinceEpoch
+  //   };
+  // }
+
+  void delete(ItemModel item) {
+    final dbReference = _database.child('items').child(item.key);
+    dbReference.remove();
   }
 }

@@ -32,6 +32,8 @@ class ItemModel {
   double price;
   int rating;
   String key;
+  int lastEdit;
+  int created;
 
   ItemModel(
       {required this.title,
@@ -42,7 +44,9 @@ class ItemModel {
       this.width,
       required this.price,
       required this.rating,
-      required this.key})
+      required this.key,
+      required this.lastEdit,
+      required this.created})
       : assert(ItemType.values.contains(type.typeParse));
 
   factory ItemModel.fromDB(Map<String, dynamic> data, key) {
@@ -53,7 +57,9 @@ class ItemModel {
         filename: data['filename'],
         price: data['price'],
         rating: data['rating'],
-        key: key.toString());
+        key: key.toString(),
+        lastEdit: data['lastEdit'],
+        created: data['created']);
   }
 
   Map<String, dynamic> toMap() {
