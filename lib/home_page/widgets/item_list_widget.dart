@@ -13,25 +13,27 @@ class ItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Provider.of<HomePageController>(context);
 
-
     return StreamBuilder(
-      stream: controller.items,
-      builder: (context, snapshot) {
-      if (!snapshot.hasData) {
-        return LoadingWidget(message: 'Failed connecting to database.\nPlease check your network connection or try again later.',);
-      }
-      
-      final list = List.from(snapshot.data as dynamic);
+        stream: controller.items,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return LoadingWidget(
+              message:
+                  'Failed connecting to database.\nPlease check your network connection or try again later.',
+            );
+          }
 
-      return ListView.builder(
-        itemCount: list.length,
-        itemBuilder: (_, index) {
-          var item = list[index];
-          return ItemWidget(
-            item: item,
+          final list = List.from(snapshot.data as dynamic);
+
+          return ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (_, index) {
+              var item = list[index];
+              return ItemWidget(
+                item: item,
+              );
+            },
           );
-        },
-      );
-    });
+        });
   }
 }

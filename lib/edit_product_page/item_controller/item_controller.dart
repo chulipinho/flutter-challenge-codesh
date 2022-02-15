@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_challenge/shared/formatters/curency_formatter.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:mobx/mobx.dart';
@@ -9,11 +10,9 @@ part 'item_controller.g.dart';
 class ItemController = _ItemController with _$ItemController;
 
 abstract class _ItemController with Store {
-
   final ItemModel item;
 
   String filename;
- 
 
   @observable
   String title;
@@ -47,11 +46,12 @@ abstract class _ItemController with Store {
         price = CurencyFormatter.formatDouble(item.price),
         filename = item.filename,
         description = item.description;
-  
+
   String? validateName() {
     if (title == '' || title == null) return 'Please insert a name';
     return null;
   }
+
   String? validatePrice() {
     if (price == '' || price == null) return 'Please insert a price';
     return null;
@@ -61,10 +61,13 @@ abstract class _ItemController with Store {
   bool get isFormValid => validateName() == null && validatePrice() == null;
 
   void submitForm() {
-    item.description = description;
-    item.price = CurencyFormatter.doubleParse(price);
-    item.title = title;
-    item.type = type;
-    item.rating = rating;
+    final dbReference = FirebaseDatabase.instance.ref().child(item.key);
+    dbReference.update({
+      'description': description,
+      'price': CurencyFormatter.doubleParse(price),
+      'title': title,
+      'type': type,
+      'rating': rating
+    });
   }
 }

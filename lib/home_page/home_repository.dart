@@ -6,10 +6,12 @@ class HomeRepository {
 
   Stream<List<ItemModel>> getItems() {
     final itemStream = _database.onValue;
+
     final results = itemStream.map((event) {
-      final List itemMap = event.snapshot.value as List;
-      final itemList = itemMap.map((e) {
-        return ItemModel.fromDB(Map<String, dynamic>.from(e));
+      final itemMap =
+          Map<dynamic, dynamic>.from((event.snapshot.value as List).asMap());
+      final itemList = itemMap.entries.map((e) {
+        return ItemModel.fromDB(Map<String, dynamic>.from(e.value), e.key);
       }).toList();
       return itemList;
     });
