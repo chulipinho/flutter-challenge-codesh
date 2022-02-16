@@ -14,9 +14,24 @@ class LoadingWidget extends StatefulWidget {
 
 class _LoadingWidgetState extends State<LoadingWidget> {
   String state = 'loading';
+  late Timer t;
+
+  @override
+  void dispose() {
+    if (t.isActive) t.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    t = Timer(
+      Duration(seconds: 10),
+      () => setState(() {
+        state = 'failed';
+        super.setState(() {});
+      }),
+    );
+
     if (state == 'failed') {
       return Center(
           child: Text(
@@ -25,13 +40,6 @@ class _LoadingWidgetState extends State<LoadingWidget> {
         textAlign: TextAlign.center,
       ));
     }
-
-    Future.delayed(
-        Duration(seconds: 10),
-        () => setState(() {
-              state = 'failed';
-              super.setState(() {});
-            }));
 
     return Center(
       child: CircularProgressIndicator(),
