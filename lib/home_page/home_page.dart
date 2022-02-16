@@ -35,9 +35,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          body: ItemList(
-            items: controller.items!,
-          ),
+          body: ItemList(),
           bottomNavigationBar: BottomNavigationBar(items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
             BottomNavigationBarItem(icon: Icon(Icons.crop), label: "config")

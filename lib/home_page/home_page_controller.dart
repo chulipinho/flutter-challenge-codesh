@@ -14,7 +14,7 @@ abstract class _HomePageController with Store {
   @observable
   HomeState state = HomeState.empty;
 
-  Stream<List<ItemModel>>? items;
+  Stream<List<ItemModel>?>? items;
 
   void load() {
     state = HomeState.loading;

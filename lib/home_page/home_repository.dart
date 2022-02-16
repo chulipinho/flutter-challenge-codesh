@@ -4,9 +4,10 @@ import 'package:flutter_challenge/shared/models/item_model.dart';
 class HomeRepository {
   final DatabaseReference _database = FirebaseDatabase.instance.ref();
 
-  Stream<List<ItemModel>> getItems() {
+  Stream<List<ItemModel>?> getItems() {
     final itemStream = _database.child('items').onValue;
     final results = itemStream.map((event) {
+      if (event.snapshot.value == null) return null;
       final itemMap = Map<dynamic, dynamic>.from(event.snapshot.value as Map);
       final itemList = itemMap.entries.map((e) {
         return ItemModel.fromDB(Map<String, dynamic>.from(e.value), e.key);
