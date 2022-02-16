@@ -39,8 +39,8 @@ class EditProductPage extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                          image:
-                              AssetImage('assets/images/${controller.filename}'),
+                          image: AssetImage(
+                              'assets/images/${controller.filename}'),
                           fit: BoxFit.cover)),
                 ),
                 SizedBox(
@@ -74,9 +74,7 @@ class EditProductPage extends StatelessWidget {
                           keyboardType: TextInputType.number,
                           maxLength: 15,
                           textAlign: TextAlign.end,
-                          inputFormatters: [
-                            CurencyFormatter()
-                          ],
+                          inputFormatters: [CurencyFormatter()],
                           initialValue: initialPrice,
                           onChanged: controller.changePrice,
                           decoration: InputDecoration(
@@ -96,6 +94,7 @@ class EditProductPage extends StatelessWidget {
                     ),
                     Expanded(
                         child: DropdownTypeSelectorWidget(
+                            onChange: controller.changeType,
                             type: controller.type.typeParse)),
                   ],
                 ),

@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 
 class DropdownTypeSelectorWidget extends StatefulWidget {
+  final void Function(dynamic) onChange;
   ItemType type;
-  DropdownTypeSelectorWidget({required this.type, Key? key}) : super(key: key);
+  DropdownTypeSelectorWidget(
+      {required this.type, required this.onChange, Key? key})
+      : super(key: key);
 
   @override
   State<DropdownTypeSelectorWidget> createState() =>
@@ -32,6 +35,7 @@ class _DropdownTypeSelectorWidgetState
                 );
               }).toList(),
               onChanged: (newType) {
+                widget.onChange(newType);
                 setState(() {
                   widget.type = newType!;
                 });

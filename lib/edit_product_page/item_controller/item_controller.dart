@@ -29,7 +29,7 @@ abstract class _ItemController with Store {
   @observable
   String type;
   @action
-  void changeType(value) => type = value;
+  void changeType(ItemType value) => type = value.parse;
 
   @observable
   int rating;
@@ -65,7 +65,8 @@ abstract class _ItemController with Store {
   bool get isFormValid => validateName() == null && validatePrice() == null;
 
   void submitForm() {
-    final dbReference = FirebaseDatabase.instance.ref().child(item.key);
+    final database = FirebaseDatabase.instance.ref('items');
+    final dbReference = database.child(item.key);
     dbReference.update({
       'description': description,
       'price': CurencyFormatter.doubleParse(price),
