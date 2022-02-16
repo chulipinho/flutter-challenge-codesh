@@ -21,11 +21,13 @@ class EditProductPage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(90),
-          child: Observer(
-              builder: (_) => SendFormAppBarWidget(
-                  context: context,
-                  isValid: controller.isFormValid,
-                  submit: controller.submitForm))),
+          child: SafeArea(
+            child: Observer(
+                builder: (_) => SendFormAppBarWidget(
+                    context: context,
+                    isValid: controller.isFormValid,
+                    submit: controller.submitForm)),
+          )),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
