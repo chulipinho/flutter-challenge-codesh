@@ -5,7 +5,7 @@ import 'package:flutter_challenge/home_page/home_page_controller.dart';
 import 'package:flutter_challenge/home_page/widgets/rating_widget.dart';
 import 'package:flutter_challenge/shared/formatters/curency_formatter.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
-import 'package:flutter_challenge/shared/warnings/error_warning_widget.dart';
+import 'package:flutter_challenge/shared/warnings/warning_widget.dart';
 import 'package:provider/provider.dart';
 
 class ItemWidget extends StatefulWidget {
@@ -69,8 +69,8 @@ class _ItemWidgetState extends State<ItemWidget> {
                     Row(
                       children: [
                         IconButton(
-                          padding: EdgeInsets.only(right: 12),
-                          constraints: BoxConstraints(),
+                            padding: EdgeInsets.only(right: 12),
+                            constraints: BoxConstraints(),
                             onPressed: () {
                               showDialog<String>(
                                 context: context,
@@ -105,13 +105,19 @@ class _ItemWidgetState extends State<ItemWidget> {
                                         try {
                                           controller.removeItem(widget.item);
                                           Navigator.pop(context);
-                                        } catch (e) {
-                                          showDialog<String>(
+                                          showDialog(
                                               context: context,
                                               builder: (context) =>
-                                                  ErrorMessageWidget(
-                                                      message:
-                                                          'Something went wrong')).then((value) => Navigator.pop(context));
+                                                  WarningWidget.success(
+                                                      'The item ${widget.item.title} was removed successfully.'));
+                                        } catch (e) {
+                                          showDialog<String>(
+                                                  context: context,
+                                                  builder: (context) =>
+                                                      WarningWidget.error(
+                                                          'Something went wrong'))
+                                              .then((value) =>
+                                                  Navigator.pop(context));
                                         }
                                       },
                                       child: Text('OK'),
@@ -120,10 +126,13 @@ class _ItemWidgetState extends State<ItemWidget> {
                                 ),
                               );
                             },
-                            icon: Icon(Icons.close, size:26,)),
+                            icon: Icon(
+                              Icons.close,
+                              size: 26,
+                            )),
                         IconButton(
-                          padding: EdgeInsets.all(0),
-                          constraints: BoxConstraints(),
+                            padding: EdgeInsets.all(0),
+                            constraints: BoxConstraints(),
                             onPressed: () {
                               Navigator.push(
                                   context,
@@ -133,7 +142,10 @@ class _ItemWidgetState extends State<ItemWidget> {
                                 setState(() {});
                               });
                             },
-                            icon: Icon(Icons.edit, size: 24,))
+                            icon: Icon(
+                              Icons.edit,
+                              size: 24,
+                            ))
                       ],
                     ),
                     Text('\$ $price'),
