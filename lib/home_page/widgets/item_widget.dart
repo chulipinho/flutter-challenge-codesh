@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/core/app_colors.dart';
+import 'package:flutter_challenge/core/app_text_styles.dart';
 import 'package:flutter_challenge/edit_product_page/edit_product_page.dart';
 import 'package:flutter_challenge/home_page/home_page_controller.dart';
 import 'package:flutter_challenge/home_page/widgets/rating_widget.dart';
 import 'package:flutter_challenge/shared/formatters/curency_formatter.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:flutter_challenge/shared/warnings/warning_widget.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class ItemWidget extends StatefulWidget {
@@ -19,6 +21,9 @@ class ItemWidget extends StatefulWidget {
 class _ItemWidgetState extends State<ItemWidget> {
   @override
   Widget build(BuildContext context) {
+    final created = DateTime.fromMillisecondsSinceEpoch(widget.item.created);
+    final createdDate = DateFormat.yMMMd().add_jm().format(created);
+
     final controller = Provider.of<HomePageController>(context);
     const double defaultHeight = 100;
     final price = CurencyFormatter.formatDouble(widget.item.price);
@@ -52,9 +57,24 @@ class _ItemWidgetState extends State<ItemWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(widget.item.title),
+                        Flexible(
+                          child: Text(
+                            widget.item.title,
+                            style: AppTextStyles.itemTitle,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                         Text(widget.item.type),
-                        RatingWidget(rating: widget.item.rating),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            RatingWidget(rating: widget.item.rating),
+                            Text(
+                              'Created: $createdDate',
+                              style: TextStyle(fontSize: 13),
+                            )
+                          ],
+                        )
                       ],
                     ),
                   ),

@@ -7,4 +7,10 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
     fontSize: 20,
   );
+
+  static final TextStyle itemTitle = GoogleFonts.notoSans(
+    color: Colors.black,
+    fontWeight: FontWeight.w200,
+    fontSize: 16,
+  );
 }
