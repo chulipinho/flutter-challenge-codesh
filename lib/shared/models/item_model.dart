@@ -34,6 +34,7 @@ class ItemModel {
   String key;
   int lastEdit;
   int created;
+  bool isDeleted;
 
   ItemModel(
       {required this.title,
@@ -46,7 +47,8 @@ class ItemModel {
       required this.rating,
       required this.key,
       required this.lastEdit,
-      required this.created})
+      required this.created,
+      this.isDeleted = false})
       : assert(ItemType.values.contains(type.typeParse));
 
   factory ItemModel.fromDB(Map<String, dynamic> data, key) {
@@ -59,7 +61,8 @@ class ItemModel {
         rating: data['rating'],
         key: key.toString(),
         lastEdit: data['lastEdit'],
-        created: data['created']);
+        created: data['created'],
+        isDeleted: data['isDeleted'] ?? false);
   }
 
   Map<String, dynamic> toMap() {

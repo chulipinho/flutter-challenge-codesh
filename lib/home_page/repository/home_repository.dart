@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 
 class HomeRepository {
@@ -36,12 +39,31 @@ class HomeRepository {
   //     "price": item["price"],
   //     "rating": item["rating"],
   //     "lastEdit": DateTime.now().millisecondsSinceEpoch,
-  //     "created": DateTime.now().millisecondsSinceEpoch
+  //     "created": DateTime.now().millisecondsSinceEpoch,
+  //     "isDeleted": false
   //   };
   // }
 
+  Map<String, dynamic> databaseFromJson(String source) {
+    return json.decode(source);
+  }
+
+  void resetDatabase() async {
+    final json = await rootBundle.loadString('assets/database/database.json');
+    final dbFromJson = databaseFromJson(json);
+    final items = Map<String, dynamic>.from(dbFromJson['items']);
+    final itemsReference = _database.child("items");
+    items.forEach(
+      (key, value) {
+        final itemReference = itemsReference.child(key);
+        itemReference.update(value);
+        itemReference.update({'isDeleted': false});
+      },
+    );
+  }
+
   void delete(ItemModel item) {
     final dbReference = _database.child('items').child(item.key);
-    dbReference.remove();
+    dbReference.update({'isDeleted': true});
   }
 }

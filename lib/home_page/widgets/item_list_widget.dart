@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/home_page/controller/home_page_controller.dart';
 import 'package:flutter_challenge/home_page/widgets/item_widget.dart';
+import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:flutter_challenge/shared/widgets/loading_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -21,12 +22,24 @@ class ItemList extends StatelessWidget {
             );
           }
 
-          final list = List.from(snapshot.data as dynamic);
+          final List<ItemModel> list = List.from(snapshot.data as dynamic);
+          final List<ItemModel> notDeleted = [];
+
+          for (var element in list) {
+            if (!element.isDeleted) notDeleted.add(element);
+          }
+
+          if (notDeleted.isEmpty) {
+            return Center(
+              child: Text(
+                  'The list is empty.\nPlease add more items to the database or reset it.'),
+            );
+          }
 
           return ListView.builder(
-            itemCount: list.length,
+            itemCount: notDeleted.length,
             itemBuilder: (_, index) {
-              var item = list[index];
+              final ItemModel item = notDeleted[index];
               return ItemWidget(
                 item: item,
               );
