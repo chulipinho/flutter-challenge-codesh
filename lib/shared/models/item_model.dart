@@ -57,7 +57,7 @@ class ItemModel {
         type: data['type'],
         description: data['description'],
         filename: data['filename'],
-        price: data['price'],
+        price: data['price'] is int ? data['price'].toDouble() : data['price'],
         rating: data['rating'],
         key: key.toString(),
         lastEdit: data['lastEdit'],
