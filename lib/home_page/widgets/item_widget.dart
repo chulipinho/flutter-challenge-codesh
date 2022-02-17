@@ -72,7 +72,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                             RatingWidget(rating: widget.item.rating),
                             Text(
                               'Created: $createdDate',
-                              style: TextStyle(fontSize: 13),
+                              style: TextStyle(fontSize: 10),
                             )
                           ],
                         )
