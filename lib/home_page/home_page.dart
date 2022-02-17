@@ -51,8 +51,9 @@ class _HomePageState extends State<HomePage> {
         body: bodyList[_curentIndex]['page'] as Widget,
         bottomNavigationBar: BottomNavigationBar(
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: "config")
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.list_alt), label: "Credits")
           ],
           onTap: setIndex,
           currentIndex: _curentIndex,
