@@ -4,6 +4,7 @@ import 'package:flutter_challenge/core/app_text_styles.dart';
 import 'package:flutter_challenge/edit_product_page/edit_product_page.dart';
 import 'package:flutter_challenge/home_page/home_page_controller.dart';
 import 'package:flutter_challenge/home_page/widgets/rating_widget.dart';
+import 'package:flutter_challenge/shared/extensions/string_capitalize.dart';
 import 'package:flutter_challenge/shared/formatters/curency_formatter.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:flutter_challenge/shared/warnings/warning_widget.dart';
@@ -64,7 +65,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        Text(widget.item.type),
+                        Text(widget.item.type.capitalize()),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
