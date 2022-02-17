@@ -30,12 +30,24 @@ class ItemList extends StatelessWidget {
           }
 
           if (notDeleted.isEmpty) {
-            return Center(
-              child: Text(
-                'The list is empty.\nPlease add more items to the database or reset it.',
-                textAlign: TextAlign.center,
-              ),
-            );
+            return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text(
+                      'The list is empty.\nPlease add more items to the database or reset it.',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                        onPressed: controller.resetDatabase,
+                        child: Text('Click here to reset the database')),
+                  )
+                ]);
           }
 
           return ListView.builder(

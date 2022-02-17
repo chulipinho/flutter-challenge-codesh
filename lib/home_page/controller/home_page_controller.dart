@@ -22,6 +22,10 @@ abstract class _HomePageController with Store {
     state = HomeState.loaded;
   }
 
+  void resetDatabase() {
+    repository.resetDatabase();
+  }
+
   void removeItem(item) {
     repository.delete(item);
   }
