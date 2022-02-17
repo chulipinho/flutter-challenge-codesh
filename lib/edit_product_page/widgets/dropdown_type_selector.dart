@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge/shared/extensions/string_capitalize.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 
 class DropdownTypeSelectorWidget extends StatefulWidget {
@@ -20,6 +21,7 @@ class _DropdownTypeSelectorWidgetState
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 60,
       child: InputDecorator(
           decoration: InputDecoration(
               border:
@@ -30,7 +32,7 @@ class _DropdownTypeSelectorWidgetState
               value: widget.type,
               items: ItemType.values.map((e) {
                 return DropdownMenuItem(
-                  child: Text(e.parse),
+                  child: Text(e.parse.capitalize()),
                   value: e,
                 );
               }).toList(),
