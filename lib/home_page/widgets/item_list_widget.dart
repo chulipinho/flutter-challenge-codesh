@@ -32,7 +32,9 @@ class ItemList extends StatelessWidget {
           if (notDeleted.isEmpty) {
             return Center(
               child: Text(
-                  'The list is empty.\nPlease add more items to the database or reset it.'),
+                'The list is empty.\nPlease add more items to the database or reset it.',
+                textAlign: TextAlign.center,
+              ),
             );
           }
 
