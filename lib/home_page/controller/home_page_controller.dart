@@ -1,4 +1,4 @@
-import 'package:flutter_challenge/home_page/home_repository.dart';
+import 'package:flutter_challenge/home_page/repository/home_repository.dart';
 import 'package:flutter_challenge/shared/models/item_model.dart';
 import 'package:mobx/mobx.dart';
 

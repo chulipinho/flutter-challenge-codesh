@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/core/app_text_styles.dart';
-import 'package:flutter_challenge/home_page/home_page_controller.dart';
+import 'package:flutter_challenge/home_page/controller/home_page_controller.dart';
 import 'package:flutter_challenge/home_page/widgets/credits_widget.dart';
 import 'package:flutter_challenge/home_page/widgets/item_list_widget.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
