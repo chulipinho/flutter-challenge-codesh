@@ -2,7 +2,7 @@
     package="com.example.flutter_challenge">
    <application
         android:label="flutter_challenge"
-        android:name="${applicationName}"
+        android:name="Food Lister"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
