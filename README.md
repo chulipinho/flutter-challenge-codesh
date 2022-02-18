@@ -6,11 +6,11 @@ A aplicação recupera dados do Firestore através de uma Realtime Database e ge
 
 ## Instruções de instalação
 
-Para instalar o aplicativo basta executar o [.apk](https://drive.google.com/file/d/12vVerydVGksyuMH3OEVhmjzadZnGNH-1/view?usp=sharing) no seu dispositivo android. É importante ativar a permissão de "[Fontes Desconhecidas](https://www.tudocelular.com/curiosidade/noticias/n139751/como-instalar-apps-fontes-desconhecidas-android.html)" para conseguir instalar o arquivo.
+Para instalar o aplicativo basta executar o [.apk](https://drive.google.com/file/d/133BKzadSasrDzalH6f1bsYyGJfn5PVoo/view?usp=sharing) no seu dispositivo android. É importante ativar a permissão de "[Fontes Desconhecidas](https://www.tudocelular.com/curiosidade/noticias/n139751/como-instalar-apps-fontes-desconhecidas-android.html)" para conseguir instalar o arquivo.
 
 <img title="" src="assets/qrcode.png" alt="QR code para Download" width="163" data-align="center">
 
-Ou clicando [aqui](https://drive.google.com/file/d/12vVerydVGksyuMH3OEVhmjzadZnGNH-1/view?usp=sharing).
+Ou clicando [aqui](https://drive.google.com/file/d/133BKzadSasrDzalH6f1bsYyGJfn5PVoo/view?usp=sharing).
 
 ## Instruções de utilização
 
