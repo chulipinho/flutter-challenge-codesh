@@ -1,6 +1,6 @@
 # Flutter Challenge 20210610
 
-Aplicativo desenvolvido para o desafio de Flutter da [Codesh](https://coodesh.com/). 
+Aplicativo desenvolvido para o desafio de Flutter da [Coodesh](https://coodesh.com/). 
 
 A aplicação recupera dados do Firestore através de uma Realtime Database e gera uma lista editável de produtos.
 
